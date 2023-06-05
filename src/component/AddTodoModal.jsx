@@ -27,6 +27,8 @@ export default () => {
 
   const handleOk = () => {
     dispatch(addTodo({ text, isDone }));
+    setText("");
+    setIsDone(false);
     handleClose();
   };
 

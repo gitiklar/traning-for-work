@@ -8,14 +8,21 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Checkbox from "@mui/material/Checkbox";
 
 import { pink } from "@mui/material/colors";
+import { useDispatch } from "react-redux";
+import { statusChange } from "../redux/todos/slice";
 
 export default ({ item }) => {
+  const dispatch = useDispatch();
+
+  const onStatusChangeHandler = (e) =>
+    dispatch(statusChange({ id: item.id, isDone: e.target.checked }));
+
   return (
     <ListItem
       secondaryAction={
         <>
           <Checkbox
-            onChange={() => {}}
+            onChange={onStatusChangeHandler}
             checked={item.isDone}
             sx={{
               color: pink[800],

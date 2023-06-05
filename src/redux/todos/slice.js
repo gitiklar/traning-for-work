@@ -11,7 +11,12 @@ const slice = createSlice({
     addTodo(state, action) {
       state.todosList.push({ ...action.payload, id: nanoid() });
     },
-    statusChange(state, action) {},
+    statusChange(state, action) {
+      const index = state.todosList.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      state.todosList[index].isDone = action.payload.isDone;
+    },
   },
 });
 
