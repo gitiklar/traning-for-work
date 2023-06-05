@@ -1,28 +1,7 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-  todosList: [
-    {
-      text: "aaaaa",
-      isDone: false,
-    },
-    {
-      text: "xxxxx",
-      isDone: true,
-    },
-    {
-      text: "fffff",
-      isDone: true,
-    },
-    {
-      text: "hhhhh",
-      isDone: false,
-    },
-    {
-      text: "zzzzz",
-      isDone: true,
-    },
-  ],
+  todosList: [],
 };
 
 const slice = createSlice({
