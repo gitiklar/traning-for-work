@@ -6,31 +6,12 @@ import Typography from "@mui/material/Typography";
 
 import ToDoItem from "../component/ToDoItem";
 import { Button } from "@mui/material";
-
-const toDoList = [
-  {
-    text: "aaaaa",
-    isDone: false,
-  },
-  {
-    text: "xxxxx",
-    isDone: true,
-  },
-  {
-    text: "fffff",
-    isDone: true,
-  },
-  {
-    text: "hhhhh",
-    isDone: false,
-  },
-  {
-    text: "zzzzz",
-    isDone: true,
-  },
-];
+import { useSelector } from "react-redux";
+import { getTodosList } from "../redux/todos/selectors";
 
 export default () => {
+  const todosList = useSelector(getTodosList);
+
   return (
     <Box>
       <Grid container spacing={2} className="flexGrid">
@@ -39,7 +20,7 @@ export default () => {
             <Button variant="contained">Add To Do</Button>
           </Typography>
           <List>
-            {toDoList.map((item) => (
+            {todosList.map((item) => (
               <ToDoItem item={item} />
             ))}
           </List>
