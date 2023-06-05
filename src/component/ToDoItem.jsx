@@ -9,13 +9,17 @@ import Checkbox from "@mui/material/Checkbox";
 
 import { pink } from "@mui/material/colors";
 import { useDispatch } from "react-redux";
-import { statusChange } from "../redux/todos/slice";
+import { deleteItem, statusChange } from "../redux/todos/slice";
 
 export default ({ item }) => {
   const dispatch = useDispatch();
 
   const onStatusChangeHandler = (e) =>
     dispatch(statusChange({ id: item.id, isDone: e.target.checked }));
+
+  const onDelete = () => {
+    dispatch(deleteItem(item.id));
+  };
 
   return (
     <ListItem
@@ -32,7 +36,7 @@ export default ({ item }) => {
             }}
           />
           <IconButton edge="end" aria-label="delete">
-            <DeleteIcon />
+            <DeleteIcon onClick={onDelete} />
           </IconButton>
         </>
       }

@@ -17,8 +17,14 @@ const slice = createSlice({
       );
       state.todosList[index].isDone = action.payload.isDone;
     },
+    deleteItem(state, action) {
+      const index = state.todosList.findIndex(
+        (item) => item.id === action.payload
+      );
+      state.todosList.splice(index, 1);
+    },
   },
 });
 
-export const { addTodo, statusChange } = slice.actions;
+export const { addTodo, statusChange, deleteItem } = slice.actions;
 export default slice.reducer;
