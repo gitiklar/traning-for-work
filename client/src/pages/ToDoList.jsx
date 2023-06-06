@@ -1,16 +1,23 @@
-import * as React from "react";
+import { useEffect } from "react";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
 import ToDoItem from "../component/ToDoItem";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getTodosList } from "../redux/todos/selectors";
 import AddTodoModal from "../component/AddTodoModal";
+import { getTodosListHandler } from "../redux/todos/actions";
+import Loading from "../component/Loading";
 
 export default () => {
   const todosList = useSelector(getTodosList);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTodosListHandler());
+  }, []);
 
   return (
     <Box>
@@ -20,9 +27,11 @@ export default () => {
             <AddTodoModal />
           </Typography>
           <List>
-            {todosList.map((item) => (
-              <ToDoItem item={item} />
-            ))}
+            {todosList ? (
+              todosList.map((item) => <ToDoItem item={item} />)
+            ) : (
+              <Loading />
+            )}
           </List>
         </Grid>
       </Grid>
