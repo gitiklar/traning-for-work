@@ -9,3 +9,11 @@ export const getTodosListHandler = createAsyncThunk(
     return res.data;
   }
 );
+
+export const addTodoHandler = createAsyncThunk(
+  "todos/addTodo",
+  async (todo) => {
+    const res = await TodosService.addTodo(todo);
+    return res.data;
+  }
+);

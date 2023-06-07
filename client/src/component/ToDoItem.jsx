@@ -15,10 +15,10 @@ export default ({ item }) => {
   const dispatch = useDispatch();
 
   const onStatusChangeHandler = (e) =>
-    dispatch(statusChange({ id: item.id, isDone: e.target.checked }));
+    dispatch(statusChange({ id: item._id, isDone: e.target.checked }));
 
   const onDelete = () => {
-    dispatch(deleteItem(item.id));
+    dispatch(deleteItem(item._id));
   };
 
   return (

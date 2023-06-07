@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../redux/todos/slice";
+import { addTodoHandler } from "../redux/todos/actions";
 
 export default () => {
   const [open, setOpen] = useState(false);
@@ -26,7 +26,7 @@ export default () => {
   };
 
   const handleOk = () => {
-    dispatch(addTodo({ text, isDone }));
+    dispatch(addTodoHandler({ text, isDone }));
     setText("");
     setIsDone(false);
     handleClose();
